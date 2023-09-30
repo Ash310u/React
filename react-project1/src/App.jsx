@@ -1,7 +1,11 @@
+import Nimbus from './Nimbus.jsx'
 
 function App() {
   return (
-    <h1> Hello Internet </h1>
+    <>
+      <Nimbus/>
+      <h1> Hello Internet </h1>
+    </>
   )
 }
 
