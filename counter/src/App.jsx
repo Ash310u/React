@@ -2,14 +2,22 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
+  
   let [counter, setCounter] = useState(0)
 
   const addValue = () => {
     setCounter(counter + 1)
   }
+
   const removeValue = () => {
-    setCounter(counter - 1)
+    if (counter <= 0) {
+      setCounter(0)
+      alert('Be Positive')
+    } else {
+      setCounter(counter - 1)
+    }
   }
+
   return (
     <>
       <h1>Counter</h1>
