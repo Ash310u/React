@@ -6,9 +6,14 @@ const anotherElement = (
   <a href="https://google.com" target= '_blank'>Google</a>
 )
 
+const reactElement = React.createElement(
+  'a',
+  { href:'https://google.com', target:'_blank' },
+  'Google Link'
+)
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   
-  anotherElement
-  
+  reactElement
+
 )
