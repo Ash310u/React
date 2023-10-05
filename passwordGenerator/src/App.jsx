@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect} from "react";
 
 function App() {
   const [length, setLength] = useState(8);
@@ -14,11 +14,15 @@ function App() {
 
     for (let i = 1; i <= length; i++) {
       const char = Math.floor(Math.random() * str.length + 1);
-      pass = str.charAt(char);
+      pass += str.charAt(char);
     }
 
     setPassword(pass);
   }, [length, numberAllowed, characterAllowed, setPassword]);
+
+  useEffect(() => {
+    passwordGenerator()
+  }, [length, numberAllowed, characterAllowed, passwordGenerator])
 
   return (
     <>
