@@ -1,10 +1,13 @@
-import { useState, useCallback, useEffect} from "react";
+import { useState, useCallback, useEffect, useRef} from "react";
 
 function App() {
   const [length, setLength] = useState(8);
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [characterAllowed, setCharacterAllowed] = useState(false);
   const [password, setPassword] = useState("");
+
+  // useRef hook 
+  const passwordRef =  useRef(null )
 
   const passwordGenerator = useCallback(() => {
     let pass = "";
@@ -35,6 +38,7 @@ function App() {
             className="outline-none w-full py-1 px-3 bg-white"
             placeholder="Password"
             readOnly
+            ref={passwordRef}
           />
           <button className=" text-white bg-blue-500 py-1 px-3">Cpoy</button>
         </div>
