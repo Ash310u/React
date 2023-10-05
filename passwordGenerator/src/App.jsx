@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useRef} from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 
 function App() {
   const [length, setLength] = useState(8);
@@ -6,8 +6,8 @@ function App() {
   const [characterAllowed, setCharacterAllowed] = useState(false);
   const [password, setPassword] = useState("");
 
-  // useRef hook 
-  const passwordRef =  useRef(null )
+  // useRef hook
+  const passwordRef = useRef(null);
 
   const passwordGenerator = useCallback(() => {
     let pass = "";
@@ -23,9 +23,13 @@ function App() {
     setPassword(pass);
   }, [length, numberAllowed, characterAllowed, setPassword]);
 
+  const copyPasswordToClipboard = useCallback(() => {
+    window.navigator.clipboard.writeText(password)
+  }, [password]) 
+
   useEffect(() => {
-    passwordGenerator()
-  }, [length, numberAllowed, characterAllowed, passwordGenerator])
+    passwordGenerator();
+  }, [length, numberAllowed, characterAllowed, passwordGenerator]);
 
   return (
     <>
@@ -40,10 +44,15 @@ function App() {
             readOnly
             ref={passwordRef}
           />
-          <button className=" text-white bg-blue-500 py-1 px-3">Cpoy</button>
+          <button
+            className="text-white bg-blue-500 py-1 px-3"
+            onClick={copyPasswordToClipboard}
+          >
+            Cpoy
+          </button>
         </div>
         <div className="flex text-sm gap-x-2">
-          <div className='flex items-center'>
+          <div className="flex items-center">
             <input
               type="range"
               min={8}
@@ -63,7 +72,7 @@ function App() {
               className="cursor-pointer mx-1"
               defaultChecked={numberAllowed}
               onChange={() => {
-                setNumberAllowed((previousValue) => !previousValue)
+                setNumberAllowed((previousValue) => !previousValue);
               }}
             />
             <label>Numnbers</label>
@@ -75,7 +84,7 @@ function App() {
               className=" cursor-pointer mx-1"
               defaultChecked={characterAllowed}
               onChange={() => {
-                setCharacterAllowed((previousValue) => !previousValue)
+                setCharacterAllowed((previousValue) => !previousValue);
               }}
             />
             <label>Characters</label>
