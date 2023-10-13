@@ -5,4 +5,4 @@ import About from './About/About'
 import Contact from './Contact/Contact';
 import User from './User/User';
 
-export { Header, Home, Footer, Contact, About, User}
+export { Header, Home, Footer, Contact, About, User }
