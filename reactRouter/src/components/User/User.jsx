@@ -6,7 +6,7 @@ export default function User() {
 
     return (
         <>
-            <div className='flex justify-center text-lg'>
+            <div className='text-center text-3xl m-4 p-4 bg-gray-600 text-white'>
                 User: {userId}
             </div>
         </>
