@@ -11,25 +11,19 @@ function App() {
   }
 
   const updateTodo = (id, todo) => {
-    setTodos((prev) => {
-      prev.map((prevTodo) => {
-        prevTodo.id === id ? todo : prevTodo;
-      })
-    })
+    setTodos((prev) => prev.map((prevTodo) => (prevTodo.id === id ? todo : prevTodo)))
   }
 
   const deleteTodo = (id) => {
     setTodos((prev) => prev.filter((prevTodo) => {
-      prevTodo.id !== id
+      return prevTodo.id !== id
     }))
   }
 
   const toggleComplete = (id) => {
-    setTodos((prev) => {
-      prev.map((prevTodo) => {            // Here we overwrite the value of completed 
-        prevTodo.id === id ? { ...prevTodo, completed: !prevTodo.completed } : prevTodo
-      })
-    })
+    setTodos((prev) =>
+      prev.map((prevTodo) =>                // Here we overwrite the value of completed
+        prevTodo.id === id ? {...prevTodo, completed: !prevTodo.completed } : prevTodo))
   }
 
   useEffect(() => {
@@ -53,15 +47,11 @@ function App() {
             <TodoForm />
           </div>
           <div className="flex flex-wrap gap-y-3">
-            {
-              todos.map(todo => (
-                <div key={todo.id} className='w-full'>
-                  <TodoItem todo={todo} />
-                </div>
-              )
-              ,console.log(todos)
-              )
-            }
+            {todos.map((todo) => (
+              <div key={todo.id} className='w-full'>
+                <TodoItem todo={todo} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
